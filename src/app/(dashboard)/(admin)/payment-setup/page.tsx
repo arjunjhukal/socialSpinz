@@ -14,7 +14,7 @@ export default function PaymentSetup() {
     const [updatePaymentSetup, { isLoading }] = useCreatePaymentSetupMutation();
     const formik = useFormik({
         initialValues: {
-            idem_payment_uri: 'https://gateway.idem-club.info/idem/',
+            idem_payment_uri: process.env.NEXT_PUBLIC_IDEM_URL || '',
             idem_hashkey: '',
             idem_merchant_id: '',
         },
