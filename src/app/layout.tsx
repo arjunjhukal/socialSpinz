@@ -1,11 +1,13 @@
 import { pageSEO } from "@/serverApi/game";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import React from "react";
 import "./globals.css";
 import ProviderWrapper from "./ProviderWrapper";
 import { SeonProvider } from "./SeonProvider";
 import TopLoader from "./TopLoader";
+   
 
 const metadata: Metadata = {
   title: "Sweepstake",
@@ -72,8 +74,17 @@ export default function RootLayout({
           />
         )}
       </head>
-      {/* className="dark" */}
       <body className={`${inter.className} scroll-smooth`} cz-shortcut-listen="true">
+        {GTM_ID && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+        )}
         <SeonProvider>
           <ProviderWrapper>
             <React.Suspense fallback={<div />}>
